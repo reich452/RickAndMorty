@@ -12,7 +12,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Rickand Morty View Controller-->
+        <!--Rick v Morty-->
         <scene sceneID="tne-QT-ifu">
             <objects>
                 <viewController id="BYZ-38-t0r" customClass="RickandMortyViewController" customModule="RickyAndMortry" customModuleProvider="target" sceneMemberID="viewController">
@@ -293,7 +293,7 @@
                                             <outlet property="genderLabel" destination="y35-b6-6LY" id="ZKk-q8-Ces"/>
                                             <outlet property="heroView" destination="UhI-ha-0TM" id="Bj1-Vb-rEm"/>
                                             <outlet property="idLabel" destination="F0N-eW-zzk" id="Vj7-tq-mll"/>
-                                            <outlet property="locationLabel" destination="A9Q-Yf-NjD" id="hg3-Mk-E7G"/>
+                                            <outlet property="locationLabel" destination="Elb-q6-kao" id="2bp-ok-yKX"/>
                                             <outlet property="nameLabel" destination="yd5-VK-qhC" id="XdV-bI-GYD"/>
                                             <outlet property="originLabel" destination="A9Q-Yf-NjD" id="YbX-gW-PbQ"/>
                                             <outlet property="profileImageView" destination="3bP-mD-3wZ" id="kWW-QM-e0J"/>
@@ -314,7 +314,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
-                    <navigationItem key="navigationItem" id="sZX-V5-sTu"/>
+                    <navigationItem key="navigationItem" title="Rick v Morty" id="sZX-V5-sTu"/>
                     <size key="freeformSize" width="375" height="900"/>
                     <connections>
                         <outlet property="rickAndMortyTableView" destination="fJj-SW-71k" id="rJk-Qm-Ger"/>
@@ -323,7 +323,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1044" y="92.653673163418304"/>
+            <point key="canvasLocation" x="1057" y="179"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="od1-PB-o7K">
@@ -333,6 +333,7 @@
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" translucent="NO" largeTitles="YES" id="FDC-ex-9xZ">
                         <rect key="frame" x="0.0" y="20" width="375" height="96"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <color key="backgroundColor" red="0.12941176470588237" green="0.13725490196078433" blue="0.16078431372549021" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>

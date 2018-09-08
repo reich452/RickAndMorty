@@ -43,7 +43,7 @@ class RicandMortyTableViewCell: UITableViewCell {
         statusLabel.text = rmCharacter.status
         speciesLabel.text = rmCharacter.species
         genderLabel.text = rmCharacter.gender
-        genderLabel.text = rmCharacter.origin.originName
+        originLabel.text = rmCharacter.origin.originName
         locationLabel.text = rmCharacter.location.locationName
         RMCharicterController.shared.fetchImage(rmCharacter: rmCharacter) { (image) in
             DispatchQueue.main.async {
