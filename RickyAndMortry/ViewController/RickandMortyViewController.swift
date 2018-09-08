@@ -28,20 +28,25 @@ class RickandMortyViewController: UIViewController, UISearchBarDelegate {
     }
     
     func loadCharacters() {
-        RMCharicterController.shared.fetchCharicter { (rmCharacters) in
+        RMCharicterController.shared.fetchCharacter(idString: nil) { (rmCharacters, rmCharacter)  in
             
             DispatchQueue.main.async {
                 self.rickAndMortyTableView.reloadData()
-                print("🦊 Cell for row at is called")
+                print("🦊 reload data")
 
             }
         }
     }
 
-//    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
-//        guard let searchText = searchBar.text else { return }
-//        RMCharicterController.shared.fetchImage(rmCharacter: <#T##RMCharacter#>, completion: <#T##(UIImage?) -> Void#>)
-//    }
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        guard let searchText = searchBar.text,
+            searchText != "" && searchText != " " else { return }
+        RMCharicterController.shared.fetchCharacter(idString: searchText) { (rmCharacters, rmCharacter) in
+            DispatchQueue.main.async {
+                self.rickAndMortyTableView.reloadData()
+            }
+        }
+    }
 
 
 }

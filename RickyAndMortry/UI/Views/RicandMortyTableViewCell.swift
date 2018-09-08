@@ -28,6 +28,7 @@ class RicandMortyTableViewCell: UITableViewCell {
     var rmCharacter: RMCharacter? {
         didSet {
             updateViews()
+            print("didSet in the cell")
         }
     }
     

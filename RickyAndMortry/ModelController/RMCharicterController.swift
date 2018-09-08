@@ -22,35 +22,50 @@ class RMCharicterController {
     private init() {}
     
     var characters: [RMCharacter] = []
+    var rmCharacter: RMCharacter?
     
     let baseURL = URL(string: "https://rickandmortyapi.com/api/character")
     
      // TODO get the individual
-    func fetchCharicter(completion: @escaping ([RMCharacter]?) -> Void) {
+    func fetchCharacter(idString: String?, completion: @escaping ([RMCharacter]?, RMCharacter?) -> Void) {
        
-        guard let url = baseURL else {
+        guard var url = baseURL else {
             fatalError("Bad base url")
+        }
+    
+        if let idString = idString {
+            url = url.appendingPathComponent(idString)
         }
     
         URLSession.shared.dataTask(with: url) { (data, _, error) in
             
             if let error = error {
                 print("Error with dataTask: \(#function) \(error) \(error.localizedDescription)")
-                completion([]); return
+                completion([], nil); return
             }
             
-            guard let data = data else { completion([]); return }
+            guard let data = data else { completion([], nil); return }
             
             do {
-                let charaters = try JSONDecoder().decode(JsonDictionary.self, from: data).rmcharacters
-                self.characters = charaters
-                
-                completion(charaters)
+              
+                if idString != nil {
+                    let rmCharater = try JSONDecoder().decode(RMCharacter.self, from: data)
+                    self.characters.removeAll()
+                    self.characters.append(rmCharater)
+                    completion([], rmCharater)
+            
+                } else {
+                    let charaters = try JSONDecoder().decode(JsonDictionary.self, from: data).rmcharacters
+                    self.characters = charaters
+                    
+                    completion(charaters, nil)
+                    
+                }
                 
                 
             } catch let error {
                 print("Error with our JSONDecoder:  \(error) \(error.localizedDescription)")
-                completion([]); return
+                completion([], nil); return
             }
             
         }.resume()
