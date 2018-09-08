@@ -22,7 +22,6 @@ class RMCharicterController {
     private init() {}
     
     var characters: [RMCharacter] = []
-    var rmCharacter: RMCharacter?
     
     let baseURL = URL(string: "https://rickandmortyapi.com/api/character")
     
@@ -49,9 +48,13 @@ class RMCharicterController {
             do {
               
                 if idString != nil {
+                    // We only want one Character. The Json results does not include the results array in this one
                     let rmCharater = try JSONDecoder().decode(RMCharacter.self, from: data)
+                    // we need to remove all values in the existing source of truth
                     self.characters.removeAll()
+                    // append the new result (should just be one character)
                     self.characters.append(rmCharater)
+                    // we have to say we are completing with an empty array but we are completing with one rmCharater
                     completion([], rmCharater)
             
                 } else {
@@ -61,7 +64,6 @@ class RMCharicterController {
                     completion(charaters, nil)
                     
                 }
-                
                 
             } catch let error {
                 print("Error with our JSONDecoder:  \(error) \(error.localizedDescription)")
